@@ -1,0 +1,23 @@
+.pageLinks {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 2px;
+  transition: 1.6s;
+}
+
+.pageLinks:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.social_media_icon {
+  font-size: 32px;
+  transition: 0.6s;
+  color: #000;
+}
+
+.social_media_icon:hover {
+  transform: scale(1.1);
+}
