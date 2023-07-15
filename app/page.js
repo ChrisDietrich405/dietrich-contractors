@@ -27,6 +27,7 @@ import SlideShow from "./components/SlideShow";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import Testimonials from "./components/Testimonials";
 
 function Copyright() {
   return (
@@ -79,9 +80,9 @@ export default function Album() {
           <Container sx={{ py: 8 }} maxWidth="md">
             <Services />
             <Projects />
+            <Testimonials />
           </Container>
         </Box>
-        <Footer />
       </main>
     </ThemeProvider>
   );

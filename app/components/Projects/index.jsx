@@ -21,13 +21,13 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Projects = () => {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const cards = [1, 2, 3, 4, 5];
   return (
     <Container sx={{ py: 8 }} maxWidth="md">
       <h1>Projects</h1>
       <Grid container spacing={4}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
+        {cards.map((card, index) => (
+          <Grid item key={card} xs={12} sm={6} md={index < 3 ? 4 : 6}>
             <Card
               sx={{
                 height: "100%",

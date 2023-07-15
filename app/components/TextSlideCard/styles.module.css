@@ -1,0 +1,19 @@
+.slide_container {
+  text-align: center;
+  padding: 40px 80px;
+}
+
+.slide_container h4 {
+  font-size: 40px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.name {
+  font-style: italic;
+}

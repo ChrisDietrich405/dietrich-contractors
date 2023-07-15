@@ -1,0 +1,39 @@
+.slider_container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .next_button,
+  .prev_button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .next_button {
+    right: 25px;
+  }
+  
+  .prev_button {
+    left: 25px;
+    z-index: 1;
+  }
+  
+  .next_arrow,
+  .prev_arrow {
+    display: block;
+    font-size: 35px;
+    opacity: 0.75;
+    transition: 0.3s;
+  }
+  
+  .next_button:hover .next_arrow,
+  .prev_button:hover .prev_arrow {
+    opacity: 1;
+  }
+  
