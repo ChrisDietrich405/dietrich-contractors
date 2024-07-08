@@ -39,7 +39,7 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          // notify();
+          //  notify();
           setEmail("");
           setMessage("");
           alert("good shit");

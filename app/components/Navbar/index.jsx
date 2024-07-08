@@ -59,7 +59,6 @@ function ResponsiveAppBar() {
             />
           </Link>
           <Typography
-            // className={}
             variant="h6"
             noWrap
             component="a"
