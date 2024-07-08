@@ -9,12 +9,11 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { AiFillInstagram } from "react-icons/ai";
+import { SiNextdoor } from "react-icons/si";
 
 import styles from "./styles.module.css";
 
@@ -50,7 +49,6 @@ function ResponsiveAppBar() {
       style={{ backgroundColor: "#fff", color: "#000" }}
     >
       <Container maxWidth="xl">
-        
         <Toolbar disableGutters>
           <Link href="/">
             <Image
@@ -155,24 +153,31 @@ function ResponsiveAppBar() {
                 </Button>
               );
             })}
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page.pageTitle}
-              </Button>
-            ))} */}
+      
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100px",
+              alignItems: "center",
+            }}
+          >
             <a
-              href="https://www.instagram.com/dietrich_landcarellc/"
+              href="https://www.instagram.com/dietrichcontractors/"
               target="_blank"
               rel="noreferrer"
             >
-              <AiFillInstagram className={styles.social_media_icon} />
+              <AiFillInstagram className={styles.social_media_icon_instagram} />
+            </a>
+            <a
+              href="https://nextdoor.com/pages/dietrich-contractors-brooklyn-md/?init_source=search&query=dietrich%20contractors"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <SiNextdoor className={styles.social_media_icon_nextdoor} />
             </a>
 
             {/* <Tooltip title="Open settings">

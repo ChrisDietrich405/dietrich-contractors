@@ -5,22 +5,17 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { AiFillInstagram } from "react-icons/ai";
+import { SiNextdoor } from "react-icons/si";
 import { Box } from "@mui/material";
 
-export default function Footer() {
-  // const shadowStyle = {
-  //   boxShadow: '2px 211111px 4px rgba(0, 1111111, 0, 0.2)', // Customize the shadow values here
-  // };
+import styles from "./styles.module.css";
 
+export default function Footer() {
   return (
     <Box
       component="footer"
       sx={{
-        // backgroundColor: (theme) =>
-        //   theme.palette.mode === "light"
-        //     ? theme.palette.grey[200]
-        //     : theme.palette.grey[800],
         p: 2,
         borderTop: ".5px solid black",
       }}
@@ -64,19 +59,32 @@ export default function Footer() {
             <Typography variant="h6" color="text.primary" gutterBottom>
               Follow Us
             </Typography>
-            <Link href="https://www.facebook.com/" color="inherit">
-              <Facebook />
-            </Link>
-            <Link
-              href="https://www.instagram.com/"
-              color="inherit"
-              sx={{ pl: 1, pr: 1 }}
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100px",
+                alignItems: "center",
+              }}
             >
-              <Instagram />
-            </Link>
-            <Link href="https://www.twitter.com/" color="inherit">
-              <Twitter />
-            </Link>
+              <a
+                href="https://www.instagram.com/dietrichcontractors/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <AiFillInstagram
+                  className={styles.social_media_icon_instagram}
+                />
+              </a>
+              <a
+                href="https://nextdoor.com/pages/dietrich-contractors-brooklyn-md/?init_source=search&query=dietrich%20contractors"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiNextdoor className={styles.social_media_icon_nextdoor} />
+              </a>
+            </Box>
           </Grid>
         </Box>
 

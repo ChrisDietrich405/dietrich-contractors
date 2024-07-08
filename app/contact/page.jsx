@@ -27,6 +27,7 @@ const Contact = () => {
       message,
       to_name: "Chris",
     };
+    console.log("helo");
     console.log(templateParams);
 
     emailjs
@@ -38,9 +39,10 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          notify();
+          // notify();
           setEmail("");
           setMessage("");
+          alert("good shit");
         },
         (error) => {
           console.log(error.text);
