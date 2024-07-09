@@ -21,41 +21,47 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Projects = () => {
-  const cards = [1, 2, 3, 4, 5];
+  const cards = [
+    {
+      title: "Before",
+      image: "/before2.jpeg",
+    },
+    {
+      title: "After",
+      image: "/after2.jpeg",
+    },
+    {
+      title: "Before",
+      image: "/before.jpeg",
+    },
+    {
+      title: "After",
+      image: "/after.jpeg",
+    },
+  ];
   return (
     <Container sx={{ py: 8 }} maxWidth="md">
       <h1>Projects</h1>
       <Grid container spacing={4}>
         {cards.map((card, index) => (
-          <Grid item key={card} xs={12} sm={6} md={index < 3 ? 4 : 6}>
+          <Grid item key={card} xs={12} sm={6}>
             <Card
               sx={{
-                height: "100%",
                 display: "flex",
                 flexDirection: "column",
               }}
             >
-              <CardMedia
-                component="div"
-                sx={{
-                  // 16:9
-                  pt: "56.25%",
-                }}
-                image="https://source.unsplash.com/random?wallpapers"
-              />
               <CardContent sx={{ flexGrow: 1 }}>
+                <Image
+                  src={card.image}
+                  width={400}
+                  height={300}
+                  alt="Picture of the author"
+                />
                 <Typography gutterBottom variant="h5" component="h2">
-                  Heading
-                </Typography>
-                <Typography>
-                  This is a media card. You can use this section to describe the
-                  content.
+                  {card.title}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small">View</Button>
-                <Button size="small">Edit</Button>
-              </CardActions>
             </Card>
           </Grid>
         ))}

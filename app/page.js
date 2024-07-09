@@ -41,16 +41,16 @@ export default function Album() {
           timeOut={3000}
           images={[
             {
-              url: "/fence.jpg",
-              title: "Fence Installation",
+              url: "/image2.png",
+              title: "Bathroom Remodeling",
             },
             {
-              url: "/deck.jpg",
-              title: "Deck Installation",
+              url: "/image5.png",
+              title: "Electrical",
             },
             {
-              url: "/paver.jpg",
-              title: "Paver Installation",
+              url: "/image4.png",
+              title: "Kitchen Remodeling",
             },
           ]}
         ></SlideShow>

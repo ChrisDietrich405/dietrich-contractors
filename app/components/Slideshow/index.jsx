@@ -61,8 +61,11 @@ export default class SlideShow extends React.Component {
           </div>
           <div className={styles.contact_container}>
             <div className={styles.contain}>
-              <AiFillPhone className={styles.hello} />
-              <p className={styles.hello}>(443) 306-5270</p>
+              <AiFillPhone className={styles.phone} />
+              <a href="tel:4433065270">
+                {" "}
+                <p className={styles.phone}>(443) 306-5270</p>
+              </a>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
+import * as Validator from "validatorjs";
 import {
   TextField,
   Typography,
@@ -15,6 +16,7 @@ const Contact = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
   const sendEmail = (e) => {
@@ -24,11 +26,39 @@ const Contact = () => {
       firstName,
       lastName,
       email,
+      phone,
       message,
-      to_name: "Chris",
     };
-    console.log("helo");
-    console.log(templateParams);
+
+    const validator = new Validator(
+      this.state.customer,
+      {
+        firstName: "required",
+        lastName: "required",
+        email: "required|email",
+        phone: "required",
+        message: "required",
+      },
+      {
+        "required.firstName": "The name field is required",
+        "required.lastName": "The name field is required",
+        "required.email": "The email field is required",
+        "required.phone": "The phone field is required",
+        "required.message": "The message field is required",
+      }
+    );
+    const validate = validator.passes();
+
+    if (!validate) {
+      alert("big problems");
+    }
+
+    // if (validate) {
+    //   const postData = {
+    //     selectedServices: this.state.selectedServices,
+    //     date: this.state.customer.date,
+    //     customer: this.state.customer,
+    //   };
 
     emailjs
       .send(
@@ -39,7 +69,6 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          //  notify();
           setEmail("");
           setMessage("");
           alert("good shit");
@@ -84,6 +113,14 @@ const Contact = () => {
               label="Email"
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
+              type="text"
+            ></TextField>
+
+            <TextField
+              id="phone"
+              label="Phone"
+              variant="outlined"
+              onChange={(e) => setPhone(e.target.value)}
               type="text"
             ></TextField>
 
