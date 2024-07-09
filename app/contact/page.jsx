@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import * as Validator from "validatorjs";
@@ -12,72 +12,85 @@ import {
   Grid,
 } from "@mui/material";
 
-const Contact = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+import styles from "./styles.module.css";
 
-  const sendEmail = (e) => {
+const Contact = () => {
+  const [errors, setErrors] = useState({});
+
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  // const emailRef = useRef(null);
+  // const phoneRef = useRef(null);
+  // const messageRef = useRef(null);
+
+  const clearFormFields = () => {
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    // emailRef.current.value = "";
+    // phoneRef.current.value = "";
+    // messageRef.current.value = "";
+  };
+
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    var templateParams = {
-      firstName,
-      lastName,
-      email,
-      phone,
-      message,
-    };
-
-    const validator = new Validator(
-      this.state.customer,
-      {
-        firstName: "required",
-        lastName: "required",
-        email: "required|email",
-        phone: "required",
-        message: "required",
-      },
-      {
-        "required.firstName": "The name field is required",
-        "required.lastName": "The name field is required",
-        "required.email": "The email field is required",
-        "required.phone": "The phone field is required",
-        "required.message": "The message field is required",
-      }
-    );
-    const validate = validator.passes();
-
-    if (!validate) {
-      alert("big problems");
-    }
-
-    // if (validate) {
-    //   const postData = {
-    //     selectedServices: this.state.selectedServices,
-    //     date: this.state.customer.date,
-    //     customer: this.state.customer,
-    //   };
-
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        templateParams,
-        process.env.NEXT_PUBLIC_USER_ID
-      )
-      .then(
-        (result) => {
-          setEmail("");
-          setMessage("");
-          alert("good shit");
+    try {
+      const validator = new Validator(
+        {
+          firstName: firstNameRef.current.value,
+          lastName: lastNameRef.current.value,
+          // email: emailRef.current.value,
+          // phone: phoneRef.current.value,
+          // message: messageRef.current.value,
         },
-        (error) => {
-          console.log(error.text);
+        {
+          firstName: "required",
+          lastName: "required",
+          // email: "required|email",
+          // phone: "required|email",
+          // message: "required",
+        },
+        {
+          "required.firstName": "The first name field is required",
+          "required.lastName": "The last name field is required",
+          // "required.email": "The email field is required",
+          // "required.phone": "The phone field is required",
+          // "required.message": "The message field is required",
         }
       );
+      console.log("hello");
+      if (validator.passes()) {
+        const templateParams = {
+          firstName: firstNameRef.current.value,
+          lastName: lastNameRef.current.value,
+          // email: emailRef.current.value,
+          // phone: phone.current.value,
+          // message: messageRef.current.value,
+          // to_name: "Dietrich Contractors",
+        };
+
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_SERVICE_ID,
+          process.env.NEXT_PUBLIC_TEMPLATE_ID,
+          templateParams,
+          process.env.NEXT_PUBLIC_USER_ID
+        );
+        alert("good shit");
+        // toast.success("Your message was successfully sent");
+        clearFormFields();
+      } else {
+        setErrors(validator.errors.errors);
+        console.log(errors);
+        // toast.error("Please check the form for errors");
+      }
+    } catch (error) {
+      console.error(error);
+      // toast.error("An error occurred. Please try again later");
+    }
+
+    // setIsDisabled(false);
   };
+
   return (
     <Container sx={{ py: 8 }} maxWidth="md">
       <Typography variant="h4" mb={2} mt={2} sx={{ textAlign: "center" }}>
@@ -92,23 +105,52 @@ const Contact = () => {
             }}
             onSubmit={sendEmail}
           >
-            <TextField
+            <label htmlFor="firstName">First Name</label>
+            <input
               id="firstName"
-              label="First Name"
-              variant="outlined"
-              onChange={(e) => setFirstName(e.target.value)}
               type="text"
-            ></TextField>
+              ref={firstNameRef}
+              name="firstName"
+              placeholder="First Name"
+              // className={styles.input_text}
+              tabIndex="1"
+            />
+            {errors.firstName && (
+              <p className={styles.error_message}>
+                {errors.firstName.join(", ")}
+              </p>
+            )}
 
-            <TextField
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              ref={lastNameRef}
+              name="lastName"
+              placeholder="Last Name"
+              // className={styles.input_text}
+              tabIndex="1"
+            />
+            {errors.firstName && (
+              <p className={styles.error_message}>
+                {errors.lastName.join(", ")}
+              </p>
+            )}
+
+            {/* <TextField
               id="lastName"
               label="Last Name"
               variant="outlined"
               onChange={(e) => setLastName(e.target.value)}
               type="text"
             ></TextField>
+            {errors.firstName && (
+              <p className={styles.error_message}>
+                {errors.lastName.join(", ")}
+              </p>
+            )} */}
 
-            <TextField
+            {/* <TextField
               id="email"
               label="Email"
               variant="outlined"
@@ -131,7 +173,7 @@ const Contact = () => {
               onChange={(e) => setMessage(e.target.value)}
               multiline
               rows={5}
-            />
+            /> */}
             <Button type="submit">Submit</Button>
           </Box>
         </Grid>
