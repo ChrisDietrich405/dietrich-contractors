@@ -48,7 +48,7 @@ export default function Footer() {
               203 17th Ave Brooklyn Park, MD
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Dietrichcontractors@gmail.com
+              dietrichcontractors@gmail.com
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Phone: +1 443 306 5270
