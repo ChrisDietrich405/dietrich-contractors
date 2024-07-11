@@ -1,21 +1,16 @@
 "use client";
 import React, { useState, useRef } from "react";
-import Image from "next/image";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
 import * as Validator from "validatorjs";
-import {
-  TextField,
-  Typography,
-  Box,
-  Button,
-  Container,
-  Grid,
-} from "@mui/material";
+import { Typography, Box, Button, Container, Grid } from "@mui/material";
 
 import styles from "./styles.module.css";
 
 const Contact = () => {
   const [errors, setErrors] = useState({});
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
@@ -47,7 +42,7 @@ const Contact = () => {
           firstName: "required",
           lastName: "required",
           email: "required|email",
-          phone: "required|email",
+          phone: "required",
           message: "required",
         },
         {
@@ -58,13 +53,13 @@ const Contact = () => {
           "required.message": "The message field is required",
         }
       );
-      console.log("hello");
+
       if (validator.passes()) {
         const templateParams = {
           firstName: firstNameRef.current.value,
           lastName: lastNameRef.current.value,
           email: emailRef.current.value,
-          phone: phone.current.value,
+          phone: phoneRef.current.value,
           message: messageRef.current.value,
           to_name: "Dietrich Contractors",
         };
@@ -75,8 +70,8 @@ const Contact = () => {
           templateParams,
           process.env.NEXT_PUBLIC_USER_ID
         );
-        alert("good shit");
-        // toast.success("Your message was successfully sent");
+
+        toast.success("Your message was successfully sent");
         clearFormFields();
       } else {
         setErrors(validator.errors.errors);
@@ -85,14 +80,15 @@ const Contact = () => {
       }
     } catch (error) {
       console.error(error);
-      // toast.error("An error occurred. Please try again later");
+      toast.error("An error occurred. Please try again later");
     }
 
-    // setIsDisabled(false);
+    setIsDisabled(false);
   };
 
   return (
     <Container sx={{ py: 8 }} maxWidth="md">
+      <ToastContainer />
       <Typography variant="h4" mb={2} mt={2} sx={{ textAlign: "center" }}>
         Contact us today for a free estimate
       </Typography>
@@ -151,7 +147,7 @@ const Contact = () => {
               type="text"
               ref={emailRef}
               name="email"
-              placeholder="email"
+              placeholder="Email"
               className={styles.input_text}
               tabIndex="1"
             />
@@ -163,7 +159,7 @@ const Contact = () => {
               type="text"
               ref={phoneRef}
               name="phone"
-              placeholder="phone number"
+              placeholder="Phone Number"
               className={styles.input_text}
               tabIndex="1"
             />
@@ -171,10 +167,11 @@ const Contact = () => {
               <p className={styles.error_message}>{errors.phone.join(", ")}</p>
             )}
             <Button
+              disabled={isDisabled}
               sx={{ marginTop: "20px", width: "100%", textAlign: "center" }}
               type="submit"
             >
-              Submit
+              {isDisabled ? "Sending..." : "Send"}
             </Button>
           </Box>
         </Grid>
