@@ -8,6 +8,14 @@ import { Typography, Box, Button, Container, Grid } from "@mui/material";
 
 import styles from "./styles.module.css";
 
+const title = "Contact Dietrich Contractors";
+
+export const metadata = {
+  title: "shoe",
+  // description:
+  //   "Dietrich Contractors: Your trusted partner for comprehensive residential and commercial construction services, delivering quality, reliability, and excellence in every project.",
+};
+
 const Contact = () => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);

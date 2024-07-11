@@ -1,73 +1,34 @@
 //www.cgtconstructionllc.com
 
-"use client";
-import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SlideShow from "./components/SlideShow";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import Testimonials from "./components/Testimonials";
+import Home from "./components/Home";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+export const metadata = {
+  title: "Home | Dietrich Contractors",
+  description:
+    "Dietrich Contractors: Your trusted partner for comprehensive residential and commercial construction services, delivering quality, reliability, and excellence in every project.",
+};
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+// export const metadata = {
+//   title: 'Your Page Title', // Replace with your page title
+//   description: 'A short description of your page content', // Replace with your page description (ideally under 200 characters)
+//   openGraph: {
+//     url: 'https://your-website.com/your-page-url', // Replace with your full page URL
+//     title: 'Your Open Graph Title', // Replace with your OG title (ideally under 60 characters)
+//     description: 'Your Open Graph Description', // Replace with your OG description (ideally under 200 characters)
+//     // Add additional OG properties as needed
+//     // image: {
+//     //   url: 'https://your-website.com/your-image.jpg', // Replace with your OG image URL
+//     //   width: 800,
+//     //   height: 600,
+//     //   alt: 'Your image description', // Replace with your image alt text
+//     // },
+//   },
+// };
 
 export default function Album() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-
-      <main>
-        <SlideShow
-          timeOut={3000}
-          images={[
-            {
-              url: "/image2.png",
-              title: "Bathroom Remodeling",
-            },
-            {
-              url: "/image5.png",
-              title: "Electrical",
-            },
-            {
-              url: "/image4.png",
-              title: "Kitchen Remodeling",
-            },
-          ]}
-        ></SlideShow>
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container sx={{ py: 8 }} maxWidth="md">
-            <Services />
-            <Projects />
-            <Testimonials />
-          </Container>
-        </Box>
-      </main>
-    </ThemeProvider>
+    <>
+      <Home />
+    </>
   );
 }

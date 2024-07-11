@@ -1,4 +1,4 @@
-import { Container } from "@mui/system";
+"use client";
 import React, { useEffect, useState } from "react";
 
 import ContentSlider from "../ContentSlider";
