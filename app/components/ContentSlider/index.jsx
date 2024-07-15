@@ -8,15 +8,15 @@ import {
 
 import TextSlideCard from "../TextSlideCard";
 
-import styles from "./styles.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import styles from "./styles.module.css";
+
+
 const ContentSlider = ({
-  childrenImageHeight,
   numOfSlides,
   slideContent,
-  typeOfSlide,
 }) => {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
