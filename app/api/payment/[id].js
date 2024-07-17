@@ -11,20 +11,12 @@ const stripe = new Stripe(
 
 export async function GET(req, res) {
   try {
-    console.log("HELLO", req.query);
     await dbConnection();
     const foundCustomer = await CustomerBillModel.findOne({
       _id: ObjectId(req.params.id),
     });
-    console.log(foundCustomer);
-    // return NextResponse.json(foundCustomer, { status: 201 });
+    return NextResponse.json(foundCustomer);
   } catch (error) {
     console.log(error);
   }
-  // const paymentIntent = await stripe.paymentIntents.create({
-  //   amount: 200,
-  //   currency: "usd",
-  //   automatic_payment_methods: { enabled: true },
-  // });
-  // return Response.json({ clientSecret: paymentIntent.client_secret });
 }

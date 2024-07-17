@@ -33,7 +33,6 @@ const AdminBill = () => {
       "http://localhost:3000/api/customer-bill",
       formData
     );
-    console.log(response, formData);
     setFormData(defaultState);
     alert("great success");
 

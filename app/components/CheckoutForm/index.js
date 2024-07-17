@@ -13,10 +13,6 @@ const CheckoutForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // const elements = stripeInstance.elements({
-    //   clientSecret: options.clientSecret,
-    // });
-
     const result = await stripeInstance.confirmPayment({
       elements,
       confirmParams: {
