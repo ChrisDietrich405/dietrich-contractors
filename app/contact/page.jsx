@@ -5,15 +5,15 @@ export const metadata = {
   description:
     "Contact Dietrich Contractors today for any of your needed renovations or repairs. ",
   openGraph: {
-    url: "https://dietrichcontractors.com", 
+    url: "https://dietrichcontractors.com",
     title: "Contact Dietrich Quality Home Contracting",
     description:
       "Contact Dietrich Contractors today for any of your needed renovations or repairs.",
     image: {
-      url: "/dclogo.png", 
+      url: "/dclogo.png",
       width: 800,
       height: 600,
-      alt: "Dietrich Contractors Logo", 
+      alt: "Dietrich Contractors Logo",
     },
   },
 };

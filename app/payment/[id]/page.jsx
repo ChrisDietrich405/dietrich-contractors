@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
 
 export default function Payment() {
   const [options, setOptions] = useState("");
-
+  const [customerBill, setCustomerBill] = useState({});
   const params = useParams();
 
   useEffect(() => {
@@ -20,7 +20,11 @@ export default function Payment() {
         `http://localhost:3000/api/payment/${params.id}`
       );
       const data = await response.json();
-      setOptions({ clientSecret: data.clientSecret });
+      console.log(data);
+      setOptions({
+        clientSecret: data.clientSecret,
+      });
+      setCustomerBill(data.customerBill);
     };
 
     getClientSecret();
@@ -28,9 +32,13 @@ export default function Payment() {
 
   return (
     options && (
-      <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm />
-      </Elements>
+      <>
+        <h1>{customerBill.name}</h1>
+        <h1>{customerBill.amount}</h1>
+        <Elements stripe={stripePromise} options={options}>
+          <CheckoutForm />
+        </Elements>
+      </>
     )
   );
 }

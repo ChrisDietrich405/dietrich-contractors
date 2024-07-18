@@ -16,7 +16,7 @@ const CheckoutForm = () => {
     const result = await stripeInstance.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://localhost:3000/payment-success",
+        return_url: "http://localhost:3000/payment-success",
       },
     });
 

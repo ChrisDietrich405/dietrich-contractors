@@ -7,13 +7,14 @@ const customerBillSchema = new Schema({
   phoneNumber: String,
   service: String,
   amount: Number,
+  status: String,
+  clientSecret: String,
 });
 
-const modelName = 'customer_bills';
+const modelName = "customer_bills";
 
 if (!mongoose.models[modelName]) {
   mongoose.model(modelName, customerBillSchema);
 }
 
-
-export default mongoose.models[modelName]
+export default mongoose.models[modelName];

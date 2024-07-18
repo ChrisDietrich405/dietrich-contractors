@@ -30,7 +30,7 @@ const AdminBill = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await axios.post(
-      "http://localhost:3000/api/customer-bill",
+      "http://localhost:3000/api/admin-bill",
       formData
     );
     setFormData(defaultState);
