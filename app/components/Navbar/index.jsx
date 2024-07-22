@@ -20,7 +20,6 @@ import styles from "./styles.module.css";
 const pages = [
   { pageTitle: "Services", pageLink: "/services" },
   { pageTitle: "Contact", pageLink: "/contact" },
-  { pageTitle: "Make a payment", pageLink: "/payment" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 

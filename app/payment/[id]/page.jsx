@@ -20,18 +20,22 @@ export default function Payment() {
         `http://localhost:3000/api/payment/${params.id}`
       );
       const data = await response.json();
-      console.log(data);
-      setOptions({
-        clientSecret: data.clientSecret,
-      });
-      setCustomerBill(data.customerBill);
+      if (data.message) {
+        alert(data.message);
+      } else {
+        setOptions({
+          clientSecret: data.clientSecret,
+        });
+        setCustomerBill(data.customerBill);
+      }
     };
 
     getClientSecret();
   }, []);
 
   return (
-    options && (
+    options &&
+    customerBill && (
       <>
         <h1>{customerBill.name}</h1>
         <h1>{customerBill.amount}</h1>

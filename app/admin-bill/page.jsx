@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 const defaultState = {
   name: "",
@@ -33,9 +34,25 @@ const AdminBill = () => {
       "http://localhost:3000/api/admin-bill",
       formData
     );
-    setFormData(defaultState);
-    alert("great success");
 
+    alert("great success");
+    const templateParams = {
+      firstName: formData.name,
+      lastName: "",
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      link: `http://localhost:3000/payment/${response.data._id}`,
+      to_name: "Dietrich Contractors",
+    };
+
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_SERVICE_ID,
+      process.env.NEXT_PUBLIC_PAYMENT_TEMPLATE_ID,
+      templateParams,
+      process.env.NEXT_PUBLIC_USER_ID
+    );
+    setFormData(defaultState);
     return response;
   };
 
