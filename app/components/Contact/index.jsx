@@ -125,6 +125,17 @@ const Contact = () => {
                 {errors.firstName.join(", ")}
               </p>
             )}
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            component="form"
+            sx={{
+              borderRadius: "6px",
+              padding: "10px 30px",
+            }}
+          >
+            {/* <label htmlFor="firstName">First Name</label> */}
 
             {/* <label htmlFor="lastName">Last Name</label> */}
             <input
@@ -141,7 +152,16 @@ const Contact = () => {
                 {errors.lastName.join(", ")}
               </p>
             )}
-
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            component="form"
+            sx={{
+              borderRadius: "6px",
+              padding: "10px 30px",
+            }}
+          >
             <input
               id="email"
               type="text"
@@ -154,6 +174,15 @@ const Contact = () => {
             {errors.email && (
               <p className={styles.error_message}>{errors.email.join(", ")}</p>
             )}
+          </Box>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Box
+            component="form"
+            sx={{
+              borderRadius: "6px",
+            }}
+          >
             <input
               id="phone"
               type="text"
@@ -166,16 +195,10 @@ const Contact = () => {
             {errors.phone && (
               <p className={styles.error_message}>{errors.phone.join(", ")}</p>
             )}
-            <Button
-              disabled={isDisabled}
-              sx={{ marginTop: "20px", width: "100%", textAlign: "center" }}
-              type="submit"
-            >
-              {isDisabled ? "Sending..." : "Send"}
-            </Button>
           </Box>
         </Grid>
-        <Grid item md={6} xs={6}>
+
+        <Grid item md={12} xs={6}>
           <Box>
             <textarea
               id="message"
@@ -190,15 +213,13 @@ const Contact = () => {
               </p>
             )}
           </Box>
-          {/* <Box>
-            <Image
-              style={{ borderRadius: "6px" }}
-              src="/fence.jpg"
-              width={300}
-              height={300}
-              alt="Picture of the author"
-            />
-          </Box> */}
+          <Button
+            disabled={isDisabled}
+            sx={{ marginTop: "20px", width: "100%", textAlign: "center" }}
+            type="submit"
+          >
+            {isDisabled ? "Sending..." : "Send"}
+          </Button>
         </Grid>
       </Grid>
     </Container>

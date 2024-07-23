@@ -12,7 +12,7 @@ export async function POST(req, res) {
       phoneNumber: data.phoneNumber,
       service: data.service,
       amount: data.amount,
-      status: "pending"
+      status: "pending",
     });
 
     await customerBill.save();

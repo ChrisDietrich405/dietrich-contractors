@@ -1,5 +1,5 @@
 "use client";
-import { Elements, useElements, PaymentElement } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
