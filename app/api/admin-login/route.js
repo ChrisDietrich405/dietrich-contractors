@@ -2,7 +2,7 @@ import dbConnection from "../../config/db";
 import AdminModel from "../../models/admin";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import * as jwt from "jose";
 
 export async function POST(req, res) {
   try {
@@ -20,12 +20,15 @@ export async function POST(req, res) {
         { status: 401 }
       );
     }
-    const jwtToken = jwt.sign({ id: adminFound.id }, process.env.JWT_SECRET, {
-      expiresIn: "2d",
-    });
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET); // Convert the secret to Uint8Array
+    const jwtToken = await new jwt.SignJWT({ id: adminFound.id })
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" }) // Set the algorithm and token type
+      .setIssuedAt() // Set the issued at claim
+      .setExpirationTime("2d") // Set the expiration time
+      .sign(secret); // Sign the token with the secret
 
     db.connection.close();
-    return NextResponse.json({jwtToken});
+    return NextResponse.json({ jwtToken });
   } catch (error) {
     console.error("Error parsing request body:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

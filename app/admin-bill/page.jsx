@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   FormControl,
   InputLabel,
@@ -21,6 +22,8 @@ const defaultState = {
 };
 const AdminBill = () => {
   const [formData, setFormData] = useState(defaultState);
+  const [token, setToken] = useState("");
+  const router = useRouter();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -32,37 +35,53 @@ const AdminBill = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post(
-      "http://localhost:3000/api/admin-bill",
-      formData
-    );
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/admin-bill",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    alert("great success");
-    const templateParams = {
-      firstName: formData.name,
-      lastName: "",
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.service,
-      link: `http://localhost:3000/payment/${response.data._id}`,
-      to_name: "Dietrich Contractors",
-    };
+      alert("great success");
+      const templateParams = {
+        firstName: formData.name,
+        lastName: "",
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        link: `http://localhost:3000/payment/${response.data._id}`,
+        to_name: "Dietrich Contractors",
+      };
 
-    await emailjs.send(
-      process.env.NEXT_PUBLIC_SERVICE_ID,
-      process.env.NEXT_PUBLIC_PAYMENT_TEMPLATE_ID,
-      templateParams,
-      process.env.NEXT_PUBLIC_USER_ID
-    );
-    setFormData(defaultState);
-    return response;
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_PAYMENT_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_USER_ID
+      );
+      setFormData(defaultState);
+      return response;
+    } catch (error) {
+      alert("booooo");
+    }
   };
+
+  useEffect(() => {
+    const tokenId = localStorage.getItem("token");
+    if (!tokenId) {
+      router.push("/admin-login");
+    }
+    setToken(tokenId);
+  }, []);
 
   return (
     <div className={styles.form_container}>
-
       <form onSubmit={handleSubmit}>
-      <h1>Admin Bill</h1>
+        <h1>Admin Bill</h1>
         <FormControl>
           <InputLabel htmlFor="name-input">Name</InputLabel>
           <Input

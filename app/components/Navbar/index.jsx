@@ -17,9 +17,12 @@ import { SiNextdoor } from "react-icons/si";
 
 import styles from "./styles.module.css";
 
-const pages = [
+let pages = [
   { pageTitle: "Services", pageLink: "/services" },
   { pageTitle: "Contact", pageLink: "/contact" },
+  { pageTitle: "Login", pageLink: "/admin-login", protected: true },
+  { pageTitle: "Admin bill", pageLink: "/admin-bill", private: true },
+  { pageTitle: "Logout", pageLink: "/admin-login", private: true },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -30,6 +33,7 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -41,6 +45,20 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const tokenId = localStorage.getItem("token");
+
+  pages = pages.filter((page) => {
+    if (!page.protected && !page.private) {
+      return true;
+    }
+    if (tokenId && !page.protected && page.private) {
+      return true;
+    }
+    if (!tokenId && page.protected && !page.private) {
+      return true;
+    }
+  });
 
   return (
     <AppBar
