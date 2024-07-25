@@ -1,4 +1,5 @@
-//www.cgtconstructionllc.com
+//dietrichcontractors@gmail.com
+//secret
 
 import Home from "./components/Home";
 

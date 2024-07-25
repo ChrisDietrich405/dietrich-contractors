@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./styles.module.css";
 
@@ -45,8 +47,13 @@ const AdminBill = () => {
           },
         }
       );
+      if (response) {
+        console.log("hello");
+        return toast.success("Bill sent to customer successfully");
+      }
 
-      alert("great success");
+
+
       const templateParams = {
         firstName: formData.name,
         lastName: "",
@@ -66,7 +73,7 @@ const AdminBill = () => {
       setFormData(defaultState);
       return response;
     } catch (error) {
-      alert("booooo");
+      toast.error(error.response.data.message);
     }
   };
 
@@ -92,6 +99,7 @@ const AdminBill = () => {
             aria-describedby="name-helper-text"
           />
           <FormHelperText id="name-helper-text">Enter the name.</FormHelperText>
+          <ToastContainer />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="email-input">Email address</InputLabel>

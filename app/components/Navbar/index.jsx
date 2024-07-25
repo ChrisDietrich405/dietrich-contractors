@@ -46,18 +46,20 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const tokenId = localStorage.getItem("token");
+  React.useEffect(() => {
+    const tokenId = localStorage.getItem("token");
 
-  pages = pages.filter((page) => {
-    if (!page.protected && !page.private) {
-      return true;
-    }
-    if (tokenId && !page.protected && page.private) {
-      return true;
-    }
-    if (!tokenId && page.protected && !page.private) {
-      return true;
-    }
+    pages = pages.filter((page) => {
+      if (!page.protected && !page.private) {
+        return true;
+      }
+      if (tokenId && !page.protected && page.private) {
+        return true;
+      }
+      if (!tokenId && page.protected && !page.private) {
+        return true;
+      }
+    });
   });
 
   return (

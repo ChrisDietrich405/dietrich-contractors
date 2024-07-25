@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./styles.module.css";
 
@@ -41,8 +43,7 @@ const AdminLogin = () => {
 
       router.push("/admin-bill");
     } catch (error) {
-      alert("User or password invalid");
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -50,7 +51,7 @@ const AdminLogin = () => {
     <div className={styles.form_container}>
       <form onSubmit={handleSubmit}>
         <h1>Admin login</h1>
-
+        <ToastContainer />
         <FormControl>
           <InputLabel htmlFor="email-input">Email address</InputLabel>
           <Input
