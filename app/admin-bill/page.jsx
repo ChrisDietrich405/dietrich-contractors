@@ -48,11 +48,8 @@ const AdminBill = () => {
         }
       );
       if (response) {
-        console.log("hello");
         return toast.success("Bill sent to customer successfully");
       }
-
-
 
       const templateParams = {
         firstName: formData.name,

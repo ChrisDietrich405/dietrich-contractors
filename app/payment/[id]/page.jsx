@@ -32,7 +32,8 @@ export default function Payment() {
 
     getClientSecret();
   }, []);
-
+  // The clientSecret ensures secure communication between your server and the Stripe API, minimizing the risk of unauthorized access or manipulation of payment intents.
+  // It acts as a one-time-use token that allows the client to perform specific actions related to a payment or setup intent without exposing sensitive information like your Stripe API keys.
   return (
     options &&
     customerBill && (

@@ -18,4 +18,3 @@ if (!mongoose.models[modelName]) {
 }
 
 export default mongoose.models[modelName];
-

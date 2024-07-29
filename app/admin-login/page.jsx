@@ -18,6 +18,7 @@ const defaultState = {
   email: "",
   password: "",
 };
+
 const AdminLogin = () => {
   const [formData, setFormData] = useState(defaultState);
 

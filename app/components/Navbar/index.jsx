@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { AiFillInstagram } from "react-icons/ai";
 import { SiNextdoor } from "react-icons/si";
+import { UserContext } from "../context/UserContext";
 
 import styles from "./styles.module.css";
 
@@ -24,11 +25,14 @@ let pages = [
   { pageTitle: "Admin bill", pageLink: "/admin-bill", private: true },
   { pageTitle: "Logout", pageLink: "/admin-login", private: true },
 ];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { isLoggedIn, setIsLoggedIn, logOutUser } =
+    React.useContext(UserContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,20 +51,18 @@ function ResponsiveAppBar() {
   };
 
   React.useEffect(() => {
-    const tokenId = localStorage.getItem("token");
-
     pages = pages.filter((page) => {
       if (!page.protected && !page.private) {
         return true;
       }
-      if (tokenId && !page.protected && page.private) {
+      if (isLoggedIn && !page.protected && page.private) {
         return true;
       }
-      if (!tokenId && page.protected && !page.private) {
+      if (!isLoggedIn && page.protected && !page.private) {
         return true;
       }
     });
-  });
+  }, [isLoggedIn]);
 
   return (
     <AppBar

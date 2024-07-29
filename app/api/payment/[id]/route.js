@@ -46,7 +46,7 @@ export async function GET(req, query) {
     foundCustomerBill.save();
 
     return NextResponse.json({
-      clientSecret: paymentIntent.client_secret,
+      clientSecret: paymentIntent.client_secret, //????????????
       //cart id - used for authorization
       customerBill: foundCustomerBill,
     });
