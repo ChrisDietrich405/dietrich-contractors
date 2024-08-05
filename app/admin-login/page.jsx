@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import * as React from "react";
 import {
   FormControl,
   InputLabel,
@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { UserContext } from "../context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,7 +21,8 @@ const defaultState = {
 };
 
 const AdminLogin = () => {
-  const [formData, setFormData] = useState(defaultState);
+  const [formData, setFormData] = React.useState(defaultState);
+  const { setIsLoggedIn, logOutUser } = React.useContext(UserContext);
 
   const router = useRouter();
 
@@ -32,6 +34,10 @@ const AdminLogin = () => {
     }));
   };
 
+  React.useEffect(() => {
+    logOutUser();
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -41,7 +47,7 @@ const AdminLogin = () => {
       );
 
       localStorage.setItem("token", response.data.jwtToken);
-
+      setIsLoggedIn(true);
       router.push("/admin-bill");
     } catch (error) {
       toast.error(error.response.data.message);

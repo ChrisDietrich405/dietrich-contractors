@@ -14,23 +14,39 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { AiFillInstagram } from "react-icons/ai";
 import { SiNextdoor } from "react-icons/si";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 import styles from "./styles.module.css";
 
-let pages = [
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const allPages = [
   { pageTitle: "Services", pageLink: "/services" },
   { pageTitle: "Contact", pageLink: "/contact" },
-  { pageTitle: "Login", pageLink: "/admin-login", protected: true },
-  { pageTitle: "Admin bill", pageLink: "/admin-bill", private: true },
-  { pageTitle: "Logout", pageLink: "/admin-login", private: true },
+  {
+    pageTitle: "Login",
+    pageLink: "/admin-login",
+    private: false,
+    validate: true,
+  },
+  {
+    pageTitle: "Admin bill",
+    pageLink: "/admin-bill",
+    private: true,
+    validate: true,
+  },
+  {
+    pageTitle: "Logout",
+    pageLink: "/admin-login",
+    private: true,
+    validate: true,
+  },
 ];
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [pages, setPages] = React.useState([]);
   const { isLoggedIn, setIsLoggedIn, logOutUser } =
     React.useContext(UserContext);
 
@@ -51,17 +67,23 @@ function ResponsiveAppBar() {
   };
 
   React.useEffect(() => {
-    pages = pages.filter((page) => {
-      if (!page.protected && !page.private) {
+    const filteredPages = allPages.filter((page) => {
+      if (!page.validate) {
         return true;
+        //this is for the services and contact and will ignore the last 2 if statements
       }
-      if (isLoggedIn && !page.protected && page.private) {
+      if (isLoggedIn && page.private) {
         return true;
+        //show admin-bill and logout
       }
-      if (!isLoggedIn && page.protected && !page.private) {
+      if (!isLoggedIn && !page.private) {
         return true;
+        //to login
       }
+
+      return false;
     });
+    setPages(filteredPages);
   }, [isLoggedIn]);
 
   return (

@@ -48,26 +48,27 @@ const AdminBill = () => {
         }
       );
       if (response) {
-        return toast.success("Bill sent to customer successfully");
+        const templateParams = {
+          firstName: formData.name,
+          lastName: "",
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          link: `http://localhost:3000/payment/${response.data._id}`,
+          to_name: "Dietrich Contractors",
+        };
+        console.log("template", templateParams);
+
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_SERVICE_ID,
+          process.env.NEXT_PUBLIC_PAYMENT_TEMPLATE_ID,
+          templateParams,
+          process.env.NEXT_PUBLIC_USER_ID
+        );
+        setFormData(defaultState);
+        toast.success("Bill sent to customer successfully");
       }
 
-      const templateParams = {
-        firstName: formData.name,
-        lastName: "",
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        link: `http://localhost:3000/payment/${response.data._id}`,
-        to_name: "Dietrich Contractors",
-      };
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_PAYMENT_TEMPLATE_ID,
-        templateParams,
-        process.env.NEXT_PUBLIC_USER_ID
-      );
-      setFormData(defaultState);
       return response;
     } catch (error) {
       toast.error(error.response.data.message);
