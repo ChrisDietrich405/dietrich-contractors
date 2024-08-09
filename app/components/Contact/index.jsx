@@ -1,11 +1,11 @@
 "use client";
+
 import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
 import * as Validator from "validatorjs";
 import { Typography, Box, Button, Container, Grid } from "@mui/material";
-
 import styles from "./styles.module.css";
 
 const Contact = () => {
@@ -28,33 +28,38 @@ const Contact = () => {
 
   const sendEmail = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
 
-    try {
-      const validator = new Validator(
-        {
-          firstName: firstNameRef.current.value,
-          lastName: lastNameRef.current.value,
-          email: emailRef.current.value,
-          phone: phoneRef.current.value,
-          message: messageRef.current.value,
-        },
-        {
-          firstName: "required",
-          lastName: "required",
-          email: "required|email",
-          phone: "required",
-          message: "required",
-        },
-        {
-          "required.firstName": "The first name field is required",
-          "required.lastName": "The last name field is required",
-          "required.email": "The email field is required",
-          "required.phone": "The phone field is required",
-          "required.message": "The message field is required",
-        }
-      );
+    const validationRules = {
+      firstName: "required",
+      lastName: "required",
+      email: "required|email",
+      phone: "required",
+      message: "required",
+    };
 
-      if (validator.passes()) {
+    const validationMessages = {
+      "required.firstName": "The first name field is required",
+      "required.lastName": "The last name field is required",
+      "required.email": "The email field is required",
+      "required.phone": "The phone field is required",
+      "required.message": "The message field is required",
+    };
+
+    const validator = new Validator(
+      {
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        email: emailRef.current.value,
+        phone: phoneRef.current.value,
+        message: messageRef.current.value,
+      },
+      validationRules,
+      validationMessages
+    );
+
+    if (validator.passes()) {
+      try {
         const templateParams = {
           firstName: firstNameRef.current.value,
           lastName: lastNameRef.current.value,
@@ -71,46 +76,40 @@ const Contact = () => {
           process.env.NEXT_PUBLIC_USER_ID
         );
 
-        toast.success("Your message was successfully sent");
+        toast.success("Your message was successfully sent!");
         clearFormFields();
-      } else {
-        setErrors(validator.errors.errors);
-        console.log(errors);
-        // toast.error("Please check the form for errors");
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred. Please try again later.");
       }
-    } catch (error) {
-      console.error(error);
-      toast.error("An error occurred. Please try again later");
+    } else {
+      setErrors(validator.errors.errors);
+      toast.error("Please check the form for errors.");
     }
 
     setIsDisabled(false);
   };
 
   return (
-    <Container sx={{ py: 8 }} maxWidth="md">
+    <Container maxWidth="md" sx={{ py: 8 }}>
       <ToastContainer />
-      <Typography variant="h4" mb={2} mt={2} sx={{ textAlign: "center" }}>
+      <Typography variant="h4" align="center" sx={{ mb: 4 }}>
         Contact us today for a free estimate
       </Typography>
       <Grid
         component="form"
         onSubmit={sendEmail}
         container
-        spacing={2}
+        spacing={3}
         sx={{
+          p: 4,
           border: "1px solid black",
-          display: "flex",
-          alignItems: "center",
+          borderRadius: "8px",
+          boxShadow: 3,
         }}
       >
         <Grid item md={6} xs={12}>
-          <Box
-            sx={{
-              borderRadius: "6px",
-              padding: "10px 30px",
-            }}
-          >
-            {/* <label htmlFor="firstName">First Name</label> */}
+          <Box sx={{ mb: 2 }}>
             <input
               id="firstName"
               type="text"
@@ -118,25 +117,20 @@ const Contact = () => {
               name="firstName"
               placeholder="First Name"
               className={styles.input_text}
-              tabIndex="1"
             />
             {errors.firstName && (
-              <p className={styles.error_message}>
+              <Typography
+                variant="caption"
+                color="error"
+                className={styles.error_message}
+              >
                 {errors.firstName.join(", ")}
-              </p>
+              </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box
-            sx={{
-              borderRadius: "6px",
-              padding: "10px 30px",
-            }}
-          >
-            {/* <label htmlFor="firstName">First Name</label> */}
-
-            {/* <label htmlFor="lastName">Last Name</label> */}
+          <Box sx={{ mb: 2 }}>
             <input
               id="lastName"
               type="text"
@@ -144,22 +138,20 @@ const Contact = () => {
               name="lastName"
               placeholder="Last Name"
               className={styles.input_text}
-              tabIndex="1"
             />
             {errors.lastName && (
-              <p className={styles.error_message}>
+              <Typography
+                variant="caption"
+                color="error"
+                className={styles.error_message}
+              >
                 {errors.lastName.join(", ")}
-              </p>
+              </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box
-            sx={{
-              borderRadius: "6px",
-              padding: "10px 30px",
-            }}
-          >
+          <Box sx={{ mb: 2 }}>
             <input
               id="email"
               type="text"
@@ -167,19 +159,20 @@ const Contact = () => {
               name="email"
               placeholder="Email"
               className={styles.input_text}
-              tabIndex="1"
             />
             {errors.email && (
-              <p className={styles.error_message}>{errors.email.join(", ")}</p>
+              <Typography
+                variant="caption"
+                color="error"
+                className={styles.error_message}
+              >
+                {errors.email.join(", ")}
+              </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box
-            sx={{
-              borderRadius: "6px",
-            }}
-          >
+          <Box sx={{ mb: 2 }}>
             <input
               id="phone"
               type="text"
@@ -187,16 +180,20 @@ const Contact = () => {
               name="phone"
               placeholder="Phone Number"
               className={styles.input_text}
-              tabIndex="1"
             />
             {errors.phone && (
-              <p className={styles.error_message}>{errors.phone.join(", ")}</p>
+              <Typography
+                variant="caption"
+                color="error"
+                className={styles.error_message}
+              >
+                {errors.phone.join(", ")}
+              </Typography>
             )}
           </Box>
         </Grid>
-
-        <Grid item md={12} xs={6}>
-          <Box>
+        <Grid item xs={12}>
+          <Box sx={{ mb: 3 }}>
             <textarea
               id="message"
               placeholder="Start typing..."
@@ -205,15 +202,27 @@ const Contact = () => {
               ref={messageRef}
             />
             {errors.message && (
-              <p className={styles.error_message}>
+              <Typography
+                variant="caption"
+                color="error"
+                className={styles.error_message}
+              >
                 {errors.message.join(", ")}
-              </p>
+              </Typography>
             )}
           </Box>
           <Button
             disabled={isDisabled}
-            sx={{ marginTop: "20px", width: "100%", textAlign: "center" }}
             type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{
+              py: 2,
+              textTransform: "uppercase",
+              letterSpacing: 1.2,
+              fontWeight: "bold",
+            }}
           >
             {isDisabled ? "Sending..." : "Send"}
           </Button>
@@ -224,3 +233,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

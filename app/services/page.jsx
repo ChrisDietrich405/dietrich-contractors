@@ -1,15 +1,9 @@
 "use client";
-import React from "react";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  CardMedia,
-  Container,
-} from "@mui/material";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 const cards = [
   {
@@ -20,7 +14,7 @@ const cards = [
   {
     title: "Bathroom Remodeling",
     description:
-      "We're passionate about helping you create a bathroom that not only meets your needs but exceeds your expectations. Whether it's a simple update or a complete overhaul, we treat every project with the same level of care and dedication.Ready to get started? Contact us today for a free consultation, and let’s begin the journey to your dream bathroom.",
+      "We're passionate about helping you create a bathroom that not only meets your needs but exceeds your expectations. Whether it's a simple update or a complete overhaul, we treat every project with the same level of care and dedication. Ready to get started? Contact us today for a free consultation, and let’s begin the journey to your dream bathroom.",
   },
   {
     title: "Deck Installation",
@@ -40,119 +34,79 @@ const cards = [
   {
     title: "Painting",
     description:
-      "A fresh coat of paint can transform your space and bring new life to your home or business. Whether you’re looking to update your interiors, refresh your exterior, or add a touch of creativity to a room, we’re here to deliver high-quality painting services with a focus on  customer satisfaction.",
+      "A fresh coat of paint can transform your space and bring new life to your home or business. Whether you’re looking to update your interiors, refresh your exterior, or add a touch of creativity to a room, we’re here to deliver high-quality painting services with a focus on customer satisfaction.",
   },
   {
     title: "Electrical Work",
     description:
       "Electrical issues can be both disruptive and concerning. That’s why we’re committed to providing reliable and efficient electrical services that keep your home or business running smoothly. Whether you need a simple repair, a new installation, or a complete upgrade, our team is here to deliver top-notch service with a focus on safety and quality.",
   },
-  // {
-  //   title: "Card 8",
-  //   description: "This is card number 8",
-  // },
-  // {
-  //   title: "Card 9",
-  //   description: "This is card number 9",
-  // },
 ];
 
-function Services() {
+const Services = () => {
   return (
-    <Container>
-      <Typography variant="h4" sx={{ fontWeight: "bold", marginTop: "30px" }}>
-        Services
-      </Typography>
-      <Typography variant="h6">
-        There's a reason Dietrich Contractors has more than 100 likes on Next
-        Door. We provide our customers with excellent and personalized service.
-        Below you will find a list of what we do. Feel free to connect with us
-        any time at 443 306 5270 or through email with
-        dietrichcontractors@gmail.com to get a free estimate for your next
-        project.
-      </Typography>
-      <Grid container spacing={2} padding={2}>
-        {cards.map((card, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+    <Box sx={{ bgcolor: "background.paper", py: 8 }}>
+      <Container maxWidth="md">
+        <Typography
+          variant="h3"
+          component="h1"
+          align="center"
+          gutterBottom
+          sx={{
+            fontWeight: "bold",
+            color: "primary.main",
+            margin: "20px auto",
+            textTransform: "uppercase",
+            textAlign: "center",
+          }}
+        >
+          Services
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          {cards.map((card, index) => (
             <Card
-              sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+              key={index}
+              sx={{
+                width: 275,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                p: 3,
+                boxShadow: 0,
+                border: "1px solid lightgray",
+                borderRadius: 2,
+                "&:hover": {
+                  boxShadow: 4,
+                  transform: "scale(1.05)",
+                  transition: "transform 0.3s ease-in-out",
+                },
+              }}
             >
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  {card.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {card.description}
-                </Typography>
-              </CardContent>
-              {/* <CardActions>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions> */}
+              <Typography variant="h6" mt={2} textAlign="center">
+                {card.title}
+              </Typography>
+              <Typography
+                variant="body2"
+                mt={1}
+                textAlign="center"
+                color="text.secondary"
+              >
+                {card.description}
+              </Typography>
             </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+          ))}
+        </Box>
+      </Container>
+    </Box>
   );
-}
+};
 
 export default Services;
-
-// "use client";
-
-// import {
-//   TextField,
-//   Typography,
-//   Box,
-//   Button,
-//   Container,
-//   Grid,
-//   List,
-//   ListItem,
-//   ListItemText,
-// } from "@mui/material";
-
-// const Services = () => {
-//   return (
-//     <Container sx={{ py: 8 }} maxWidth="md">
-//       <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-//         Services
-//       </Typography>
-//       <Typography variant="h6">
-//         There's a reason Dietrich Contractors has more than 100 likes on Next
-//         Door. We provide our customers with excellent and personalized service.
-//         Below you will find a list of what we do. Feel free to connect with us
-//         any time at 443 306 5270 or through email with
-//         dietrichcontractors@gmail.com to get a free estimate for your next
-//         project.
-//       </Typography>
-//       <List>
-//         <ListItem>
-//           <ListItemText primary="Kitchen Remodeling" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Bathroom Remodeling" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Deck Installation" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Fence Installation" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Plumbing" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Painting" />
-//         </ListItem>
-//         <ListItem>
-//           <ListItemText primary="Electrical Work" />
-//         </ListItem>
-//       </List>
-//     </Container>
-//   );
-// };
-
-// export default Services;
