@@ -41,6 +41,12 @@ const allPages = [
     private: true,
     validate: true,
   },
+  {
+    pageTitle: "Admin Bill List",
+    pageLink: "/admin-bill-list",
+    private: true,
+    validate: true,
+  },
 ];
 
 function ResponsiveAppBar() {
