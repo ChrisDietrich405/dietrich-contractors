@@ -93,6 +93,7 @@ const Contact = () => {
         Contact us today for a free estimate
       </Typography>
       <Grid
+        component="form"
         onSubmit={sendEmail}
         container
         spacing={2}
@@ -104,7 +105,6 @@ const Contact = () => {
       >
         <Grid item md={6} xs={12}>
           <Box
-            component="form"
             sx={{
               borderRadius: "6px",
               padding: "10px 30px",
@@ -129,7 +129,6 @@ const Contact = () => {
         </Grid>
         <Grid item md={6} xs={12}>
           <Box
-            component="form"
             sx={{
               borderRadius: "6px",
               padding: "10px 30px",
@@ -156,7 +155,6 @@ const Contact = () => {
         </Grid>
         <Grid item md={6} xs={12}>
           <Box
-            component="form"
             sx={{
               borderRadius: "6px",
               padding: "10px 30px",
@@ -178,7 +176,6 @@ const Contact = () => {
         </Grid>
         <Grid item md={6} xs={12}>
           <Box
-            component="form"
             sx={{
               borderRadius: "6px",
             }}
