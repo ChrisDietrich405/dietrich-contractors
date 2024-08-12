@@ -93,7 +93,18 @@ const Contact = () => {
   return (
     <Container maxWidth="md" sx={{ py: 8 }}>
       <ToastContainer />
-      <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+      <Typography
+        variant="h4"
+        component="h1"
+        className={styles.title}
+        sx={{
+          marginBottom: "60px",
+          textAlign: "center",
+          width: "100%",
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+      >
         Contact us today for a free estimate
       </Typography>
       <Grid
@@ -101,131 +112,112 @@ const Contact = () => {
         onSubmit={sendEmail}
         container
         spacing={3}
-        sx={{
-          p: 4,
-          border: "1px solid black",
-          borderRadius: "8px",
-          boxShadow: 3,
-        }}
+        className={styles.container}
       >
         <Grid item md={6} xs={12}>
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 2 }} className={styles.input_data}>
             <input
               id="firstName"
               type="text"
               ref={firstNameRef}
               name="firstName"
-              placeholder="First Name"
-              className={styles.input_text}
+              required
             />
+            <div className={styles.underline}></div>
+            <label htmlFor="firstName">First Name</label>
             {errors.firstName && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={styles.error_message}
-              >
+              <Typography variant="caption" color="error">
                 {errors.firstName.join(", ")}
               </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 2 }} className={styles.input_data}>
             <input
               id="lastName"
               type="text"
               ref={lastNameRef}
               name="lastName"
-              placeholder="Last Name"
-              className={styles.input_text}
+              required
             />
+            <div className={styles.underline}></div>
+            <label htmlFor="lastName">Last Name</label>
             {errors.lastName && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={styles.error_message}
-              >
+              <Typography variant="caption" color="error">
                 {errors.lastName.join(", ")}
               </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 2 }} className={styles.input_data}>
             <input
               id="email"
               type="text"
               ref={emailRef}
               name="email"
-              placeholder="Email"
-              className={styles.input_text}
+              required
             />
+            <div className={styles.underline}></div>
+            <label htmlFor="email">Email</label>
             {errors.email && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={styles.error_message}
-              >
+              <Typography variant="caption" color="error">
                 {errors.email.join(", ")}
               </Typography>
             )}
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 2 }} className={styles.input_data}>
             <input
               id="phone"
               type="text"
               ref={phoneRef}
               name="phone"
-              placeholder="Phone Number"
-              className={styles.input_text}
+              required
             />
+            <div className={styles.underline}></div>
+            <label htmlFor="phone">Phone Number</label>
             {errors.phone && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={styles.error_message}
-              >
+              <Typography variant="caption" color="error">
                 {errors.phone.join(", ")}
               </Typography>
             )}
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box sx={{ mb: 3 }}>
+          <Box
+            sx={{ mb: 3 }}
+            className={`${styles.input_data} ${styles.textarea}`}
+          >
             <textarea
               id="message"
-              placeholder="Start typing..."
-              className={styles.message}
-              name="message"
               ref={messageRef}
-            />
+              name="message"
+              required
+            ></textarea>
+            <div className={styles.underline}></div>
+            <label htmlFor="message">Write your message</label>
             {errors.message && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={styles.error_message}
-              >
+              <Typography variant="caption" color="error">
                 {errors.message.join(", ")}
               </Typography>
             )}
           </Box>
-          <Button
-            disabled={isDisabled}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            sx={{
-              py: 2,
-              textTransform: "uppercase",
-              letterSpacing: 1.2,
-              fontWeight: "bold",
-            }}
-          >
-            {isDisabled ? "Sending..." : "Send"}
-          </Button>
+          <Box className={`${styles.submit_btn} ${styles.input_data}`}>
+            <div className={styles.inner}></div>
+            <Button
+              disabled={isDisabled}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ backgroundColorolor: "#323c53" }}
+              className={styles.submit_button}
+            >
+              {isDisabled ? "Sending..." : "Send"}
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Container>
@@ -233,4 +225,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

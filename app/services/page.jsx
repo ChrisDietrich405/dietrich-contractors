@@ -50,15 +50,7 @@ const Services = () => {
         <Typography
           variant="h3"
           component="h1"
-          align="center"
-          gutterBottom
-          sx={{
-            fontWeight: "bold",
-            color: "primary.main",
-            margin: "20px auto",
-            textTransform: "uppercase",
-            textAlign: "center",
-          }}
+          sx={{ marginBottom: "20px", textAlign: "center", width: "100%" }}
         >
           Services
         </Typography>
@@ -67,7 +59,6 @@ const Services = () => {
             display: "flex",
             justifyContent: "space-around",
             flexWrap: "wrap",
-            alignItems: "center",
             gap: 2,
           }}
         >
@@ -78,7 +69,6 @@ const Services = () => {
                 width: 275,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
                 p: 3,
                 boxShadow: 0,
                 border: "1px solid lightgray",
@@ -90,15 +80,10 @@ const Services = () => {
                 },
               }}
             >
-              <Typography variant="h6" mt={2} textAlign="center">
+              <Typography variant="h6" mt={2}>
                 {card.title}
               </Typography>
-              <Typography
-                variant="body2"
-                mt={1}
-                textAlign="center"
-                color="text.secondary"
-              >
+              <Typography variant="body2" mt={1} color="text.secondary">
                 {card.description}
               </Typography>
             </Card>

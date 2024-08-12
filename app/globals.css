@@ -14,9 +14,10 @@
 }
 
 h1 {
-  font-size: 30px; 
+  font-size: 30px;
   text-align: center;
   border-bottom: 1px solid black;
   width: 60%;
-  margin: 0 auto 30px; ;
+  margin: 0 auto 30px;
+  padding-bottom: 19px; 
 }

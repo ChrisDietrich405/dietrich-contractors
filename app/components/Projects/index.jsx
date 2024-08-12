@@ -40,8 +40,19 @@ const Projects = () => {
     },
   ];
   return (
-    <Container sx={{ py: 8 }} maxWidth="md">
-      <h1>Projects</h1>
+    <Container maxWidth="md" sx={{ padding: "0" }}>
+      <Typography
+        variant="h3"
+        component="h1"
+        sx={{
+          marginBottom: "30px",
+          textAlign: "center",
+          width: "100%",
+          fontWeight: "bold",
+        }}
+      >
+        Projects
+      </Typography>
       <Grid container spacing={4}>
         {cards.map((card, index) => (
           <Grid item key={card} xs={12} sm={6}>

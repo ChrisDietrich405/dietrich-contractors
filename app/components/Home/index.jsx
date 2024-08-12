@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SlideShow from "../Slideshow";
-import Services from "../Services";
+// import Services from "../Services";
 import Projects from "../Projects";
 import Testimonials from "../Testimonials";
 
@@ -43,8 +43,8 @@ export default function Home() {
             pb: 6,
           }}
         >
-          <Container sx={{ py: 8 }} maxWidth="md">
-            <Services />
+          <Container maxWidth="md">
+            {/* <Services /> */}
             <Projects />
             <Testimonials />
           </Container>

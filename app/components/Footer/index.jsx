@@ -18,6 +18,7 @@ export default function Footer() {
       sx={{
         p: 2,
         borderTop: ".5px solid black",
+        backgroundColor: "#323c53",
       }}
     >
       <Container sx={{ py: 8 }} maxWidth="md">
@@ -33,7 +34,7 @@ export default function Footer() {
         >
           <Grid xs={12}>
             {" "}
-            <Typography variant="h6" color="text.primary" gutterBottom>
+            <Typography variant="h6" color="#fff" gutterBottom>
               Contact Us
             </Typography>
             <Link href="/">
@@ -44,19 +45,19 @@ export default function Footer() {
                 alt="Company Logo"
               />
             </Link>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="#fff">
               203 17th Ave Brooklyn Park, MD
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="#fff">
               dietrichcontractors@gmail.com
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="#fff">
               Phone: +1 443 306 5270
             </Typography>
           </Grid>
           <Grid xs={12}>
             {" "}
-            <Typography variant="h6" color="text.primary" gutterBottom>
+            <Typography variant="h6" color="#fff" gutterBottom>
               Follow Us
             </Typography>
             <Box
@@ -89,13 +90,17 @@ export default function Footer() {
         </Box>
 
         <Box mt={5}>
-          <Typography variant="body2" color="text.secondary" align="center">
+          <Typography variant="body2" color="#fff" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="https://your-website.com/">
+            <Link
+              color="inherit"
+              sx={{ textDecoration: "none" }}
+              href="https://your-website.com/"
+            >
               Dietrich Contractors
             </Link>{" "}
             {new Date().getFullYear()}
-            {"."}
+          
           </Typography>
         </Box>
       </Container>

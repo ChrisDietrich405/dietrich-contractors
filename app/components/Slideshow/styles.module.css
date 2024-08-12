@@ -85,6 +85,7 @@
 
 .contain {
   display: flex;
+  align-items: center;
 }
 
 .contain:hover {

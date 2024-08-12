@@ -3,13 +3,25 @@ import React, { useEffect, useState } from "react";
 
 import ContentSlider from "../ContentSlider";
 import testimonialData from "@/TestimonialData";
+import { Container, Typography } from "@mui/material";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState(testimonialData);
 
   return (
-    <div style={{ marginTop: "30px" }}>
-      <h1>Testimonials</h1>
+    <Container maxWidth="md" sx={{ marginTop: "60px" }}>
+      <Typography
+        variant="h3"
+        component="h1"
+        sx={{
+          marginBottom: "10px",
+          textAlign: "center",
+          width: "100%",
+          fontWeight: "bold",
+        }}
+      >
+        Testimonials
+      </Typography>
 
       <ContentSlider
         typeOfSlide="text"
@@ -17,7 +29,7 @@ const Testimonials = () => {
         numOfSlides={1}
         slideContent={testimonials}
       />
-    </div>
+    </Container>
   );
 };
 

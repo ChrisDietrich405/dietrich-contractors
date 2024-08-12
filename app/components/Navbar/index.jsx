@@ -94,9 +94,14 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-      position="static"
-      style={{ backgroundColor: "#fff", color: "#000" }}
-    >
+    position="static"
+    style={{
+      backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background
+      color: "#000",
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Soft shadow with blur
+      backdropFilter: "blur(10px)", // Blur effect
+    }}
+  >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
