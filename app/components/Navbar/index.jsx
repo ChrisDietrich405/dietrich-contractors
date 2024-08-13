@@ -94,14 +94,14 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-    position="static"
-    style={{
-      backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background
-      color: "#000",
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Soft shadow with blur
-      backdropFilter: "blur(10px)", // Blur effect
-    }}
-  >
+      position="static"
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background
+        color: "#000",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Soft shadow with blur
+        backdropFilter: "blur(10px)", // Blur effect
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
@@ -113,6 +113,7 @@ function ResponsiveAppBar() {
             />
           </Link>
           <Typography
+            className={styles.title}
             variant="h6"
             noWrap
             component="a"
@@ -161,7 +162,7 @@ function ResponsiveAppBar() {
               {pages.map((page, index) => {
                 return (
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">
+                    <Typography textAlign="center" className={styles.link_dropdown}>
                       <Link href={page.pageLink}> {page.pageTitle}</Link>
                     </Typography>
                   </MenuItem>
@@ -169,8 +170,9 @@ function ResponsiveAppBar() {
               })}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "none", md: "none" }, mr: 1 }} />
           <Typography
+            className={styles.title}
             variant="h5"
             noWrap
             component="a"

@@ -9,7 +9,7 @@ const cards = [
   {
     title: "Kitchen Remodeling",
     description:
-      "We are passionate about transforming your kitchen into the heart of your home. Our goal is to help you design a space that not only meets your cooking needs but also reflects your style and enhances your daily life. Whether you’re dreaming of a sleek modern design or a cozy traditional setup, we are here to bring your vision to life.",
+      "We are committed to transforming your kitchen into the heart of your home. Our goal is to help you design a space that not only meets your cooking needs but also reflects your style and enhances your daily life. Whether you’re dreaming of a sleek modern design or a cozy traditional setup, we are here to bring your vision to life.",
   },
   {
     title: "Bathroom Remodeling",

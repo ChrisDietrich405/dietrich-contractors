@@ -31,3 +31,14 @@
 .social_media_icon_nextdoor:hover {
   transform: scale(1.1);
 }
+
+@media only screen and (max-width: 790px) {
+  .title {
+    display: none;
+  }
+
+  .link_dropdown a {
+    color: #000;
+    text-decoration: none; 
+  }
+}
