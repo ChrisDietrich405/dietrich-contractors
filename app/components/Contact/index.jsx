@@ -212,7 +212,7 @@ const Contact = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ backgroundColorolor: "#323c53" }}
+              sx={{ backgroundColor: "#323c53" }}
               className={styles.submit_button}
             >
               {isDisabled ? "Sending..." : "Send"}

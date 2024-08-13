@@ -9,10 +9,10 @@ import { UserProvider } from "./context/UserContext";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 
-// export const metadata = {
-//   title: "Your Page Title",
-//   description: "A short description of your page",
-// };
+export const metadata = {
+  title: "Dietrich Contractors",
+  description: "Dietrich Contractors delivers quality and great customer service for many of your home needs",
+};
 
 export default function RootLayout({ children }) {
   return (

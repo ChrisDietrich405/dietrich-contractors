@@ -196,6 +196,7 @@ const AdminLogin = () => {
               py: 1.5,
               textTransform: "uppercase",
               fontWeight: "bold",
+              backgroundColor: "#323c53",
             }}
           >
             Submit
@@ -207,4 +208,3 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
-
