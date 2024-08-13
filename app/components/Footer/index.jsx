@@ -97,7 +97,7 @@ export default function Footer() {
               sx={{ textDecoration: "none" }}
               href="https://your-website.com/"
             >
-              Dietrich Contractors
+              Dietrich Contractors.
             </Link>{" "}
             {new Date().getFullYear()}
           
