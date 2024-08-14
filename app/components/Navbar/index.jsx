@@ -171,7 +171,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "none", md: "none" }, mr: 1 }} />
-          <Typography
+          {/* <Typography
             className={styles.title}
             variant="h5"
             noWrap
@@ -189,7 +189,7 @@ function ResponsiveAppBar() {
             }}
           >
             Dietrich Contractors
-          </Typography>
+          </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => {
               return (

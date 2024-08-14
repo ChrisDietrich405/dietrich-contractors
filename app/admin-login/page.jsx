@@ -188,6 +188,7 @@ const AdminLogin = () => {
             />
           </FormControl>
           <Button
+            className={styles.submit_button}
             type="submit"
             variant="contained"
             color="primary"
