@@ -120,6 +120,7 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               mr: 2,
+              mb: 1,
               display: { xs: "none", md: "flex" },
               fontFamily: "roboto",
               fontWeight: 700,
@@ -130,7 +131,12 @@ function ResponsiveAppBar() {
             Dietrich Contractors
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -161,8 +167,16 @@ function ResponsiveAppBar() {
             >
               {pages.map((page, index) => {
                 return (
-                  <MenuItem key={index} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" className={styles.link_dropdown}>
+                  <MenuItem
+                    sx={{ marginBottom: "15px" }}
+                    key={index}
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography
+                      textAlign="center"
+                      className={styles.link_dropdown}
+                  
+                    >
                       <Link href={page.pageLink}> {page.pageTitle}</Link>
                     </Typography>
                   </MenuItem>
@@ -171,26 +185,14 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "none", md: "none" }, mr: 1 }} />
-          {/* <Typography
-            className={styles.title}
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
+
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "none", md: "flex" },
+              marginBottom: "4px",
             }}
           >
-            Dietrich Contractors
-          </Typography> */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => {
               return (
                 <Button

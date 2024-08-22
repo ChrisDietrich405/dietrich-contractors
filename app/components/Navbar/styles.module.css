@@ -38,6 +38,7 @@
   }
 
   .link_dropdown a {
+    margin-bottom: 10px; 
     color: #000;
     text-decoration: none; 
   }
