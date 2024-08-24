@@ -98,7 +98,7 @@ const Contact = () => {
         component="h1"
         className={styles.title}
         sx={{
-          marginBottom: "60px",
+          marginBottom: "30px",
           textAlign: "center",
           width: "100%",
           textDecoration: "none",
@@ -167,6 +167,7 @@ const Contact = () => {
               </Typography>
             )}
           </Box>
+          
         </Grid>
         <Grid item md={6} xs={12}>
           <Box sx={{ mb: 2 }} className={styles.input_data}>

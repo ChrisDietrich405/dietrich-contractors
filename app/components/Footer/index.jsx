@@ -100,7 +100,6 @@ export default function Footer() {
               Dietrich Contractors.
             </Link>{" "}
             {new Date().getFullYear()}
-          
           </Typography>
         </Box>
       </Container>
