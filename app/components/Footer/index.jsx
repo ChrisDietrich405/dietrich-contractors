@@ -39,7 +39,7 @@ export default function Footer() {
             </Typography>
             <Link href="/">
               <Image
-                src="/dclogo.png"
+                src="/newlogo.png"
                 width={50}
                 height={50}
                 alt="Company Logo"

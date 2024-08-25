@@ -1,9 +1,14 @@
 "use client";
 import * as React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
+import { SiNextdoor } from "react-icons/si";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+
+import styles from "./styles.module.css";
 
 const cards = [
   {
@@ -46,18 +51,23 @@ const cards = [
 const Services = () => {
   return (
     <Box sx={{ bgcolor: "background.paper", py: 8 }}>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Typography
           variant="h3"
           component="h1"
-          sx={{ marginBottom: "20px", textAlign: "center", width: "100%" }}
+          sx={{
+            marginBottom: "20px",
+            textAlign: "center",
+            width: "100%",
+            fontWeight: "bold",
+          }}
         >
           Services
         </Typography>
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             flexWrap: "wrap",
             gap: 2,
           }}
@@ -66,7 +76,7 @@ const Services = () => {
             <Card
               key={index}
               sx={{
-                width: 275,
+                width: `calc(25% - 16px)`, // Ensures four cards per line with gap accounted for
                 display: "flex",
                 flexDirection: "column",
                 p: 3,
@@ -89,6 +99,75 @@ const Services = () => {
             </Card>
           ))}
         </Box>
+        <Card
+          sx={{
+            width: "50%",
+            margin: "30px auto",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <a
+            style={{
+              width: "60%",
+              margin: "30px auto",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              textDecoration: "none",
+            }}
+            target="_blank"
+            href="https://nextdoor.com/pages/jm-services-middle-river-md"
+            rel="noopener noreferrer"
+          >
+            <Typography variant="body2" mt={1} color="text.secondary">
+              Need help with mowing? My younger brother Jay does that.
+            </Typography>
+
+            <Image
+              src="/jmservices.jpg"
+              width={50}
+              height={50}
+              alt="JM Services Logo"
+            />
+          </a>
+        </Card>
+        <Card
+          sx={{
+            padding: "20px",
+            width: "50%",
+            margin: "30px auto",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <a
+            style={{
+              width: "60%",
+              margin: "30px auto",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              textDecoration: "none",
+            }}
+            target="_blank"
+            href="https://www.dietrichlandcare.com/"
+            rel="noopener noreferrer"
+          >
+            <Typography variant="body2" mt={1} color="text.secondary">
+              Need help with landscaping? My older brother Devin does that.
+            </Typography>
+
+            <Image
+              src="/dietrichlandcare.jpg"
+              width={100}
+              height={50}
+              alt="Company Logo"
+            />
+          </a>
+        </Card>
       </Container>
     </Box>
   );

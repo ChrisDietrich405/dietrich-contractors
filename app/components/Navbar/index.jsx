@@ -106,7 +106,7 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           <Link href="/">
             <Image
-              src="/dclogo.png"
+              src="/newlogo.png"
               width={50}
               height={50}
               alt="Company Logo"
@@ -175,7 +175,6 @@ function ResponsiveAppBar() {
                     <Typography
                       textAlign="center"
                       className={styles.link_dropdown}
-                  
                     >
                       <Link href={page.pageLink}> {page.pageTitle}</Link>
                     </Typography>
