@@ -99,75 +99,81 @@ const Services = () => {
             </Card>
           ))}
         </Box>
-        <Card
-          sx={{
-            width: "50%",
-            margin: "30px auto",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <a
-            style={{
-              width: "60%",
+        <Box sx={{display: "flex", gap: "40px"}}>
+          <Card
+            sx={{
+              padding: "20px",
+              gap: "20px",
+              width: "50%",
               margin: "30px auto",
               display: "flex",
-              justifyContent: "space-around",
               alignItems: "center",
-              textDecoration: "none",
             }}
-            target="_blank"
-            href="https://nextdoor.com/pages/jm-services-middle-river-md"
-            rel="noopener noreferrer"
           >
-            <Typography variant="body2" mt={1} color="text.secondary">
-              Need help with mowing? My younger brother Jay does that.
-            </Typography>
-
             <Image
               src="/jmservices.jpg"
               width={50}
               height={50}
               alt="JM Services Logo"
             />
-          </a>
-        </Card>
-        <Card
-          sx={{
-            padding: "20px",
-            width: "50%",
-            margin: "30px auto",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <a
-            style={{
-              width: "60%",
+            <a
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "start",
+                textDecoration: "none",
+              }}
+              target="_blank"
+              href="https://nextdoor.com/pages/jm-services-middle-river-md"
+              rel="noopener noreferrer"
+            >
+              <Typography
+                sx={{ fontWeight: "bolder", fontSize: "20px" }}
+                color="text.secondary"
+              >
+                Need help with mowing?
+              </Typography>
+              <Typography color="text.secondary">
+                My younger brother <b>Jay</b> does that.
+              </Typography>
+            </a>
+          </Card>
+          <Card
+            sx={{
+              padding: "20px",
+              width: "50%",
               margin: "30px auto",
               display: "flex",
               justifyContent: "space-around",
               alignItems: "center",
-              textDecoration: "none",
             }}
-            target="_blank"
-            href="https://www.dietrichlandcare.com/"
-            rel="noopener noreferrer"
           >
-            <Typography variant="body2" mt={1} color="text.secondary">
-              Need help with landscaping? My older brother Devin does that.
-            </Typography>
-
             <Image
               src="/dietrichlandcare.jpg"
               width={100}
               height={50}
               alt="Company Logo"
             />
-          </a>
-        </Card>
+            <a
+              style={{
+                width: "60%",
+                margin: "30px auto",
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "center",
+                textDecoration: "none",
+              }}
+              target="_blank"
+              href="https://www.dietrichlandcare.com/"
+              rel="noopener noreferrer"
+            >
+              <Typography variant="body2" mt={1} color="text.secondary">
+                Need help with landscaping? My older brother Devin does that.
+              </Typography>
+            </a>
+          </Card>
+        </Box>
       </Container>
     </Box>
   );
