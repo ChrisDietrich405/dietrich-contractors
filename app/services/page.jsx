@@ -99,7 +99,7 @@ const Services = () => {
             </Card>
           ))}
         </Box>
-        <Box sx={{display: "flex", gap: "40px"}}>
+        <Box sx={{ display: "flex", gap: "40px" }}>
           <Card
             sx={{
               padding: "20px",
@@ -142,34 +142,40 @@ const Services = () => {
           <Card
             sx={{
               padding: "20px",
+              gap: "20px",
               width: "50%",
               margin: "30px auto",
               display: "flex",
-              justifyContent: "space-around",
               alignItems: "center",
             }}
           >
-            <Image
+            <img src="/dietrichlandcare.jpg" alt="" width={50} height={50} />
+            {/* <Image
               src="/dietrichlandcare.jpg"
-              width={100}
+              width={50}
               height={50}
               alt="Company Logo"
-            />
+            /> */}
             <a
               style={{
-                width: "60%",
-                margin: "30px auto",
                 display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "start",
                 textDecoration: "none",
               }}
               target="_blank"
               href="https://www.dietrichlandcare.com/"
               rel="noopener noreferrer"
             >
-              <Typography variant="body2" mt={1} color="text.secondary">
-                Need help with landscaping? My older brother Devin does that.
+              <Typography
+                sx={{ fontWeight: "bolder", fontSize: "20px" }}
+                color="text.secondary"
+              >
+                Need help with landscaping services?
+              </Typography>
+              <Typography color="text.secondary">
+                My older brother <b>Devin</b> does that.
               </Typography>
             </a>
           </Card>
