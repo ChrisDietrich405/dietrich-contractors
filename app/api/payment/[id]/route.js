@@ -5,9 +5,7 @@ import { NextResponse } from "next/server";
 
 import { Stripe } from "stripe";
 
-const stripe = new Stripe(
-  "sk_test_51PaKH7JR3moazysFGOYUTVDq7pBEReSJx45sIPCqBqngKUnLlYE5d8hWnF9mUtGGXEiZqNLbPsCehY1tYESN6Cn200dMANNtIs"
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function GET(req, query) {
   try {
@@ -29,6 +27,7 @@ export async function GET(req, query) {
         { status: 400 }
       );
     }
+    
     const paymentIntent = await stripe.paymentIntents.create({
       amount: foundCustomerBill.amount * 100,
       currency: "usd",
